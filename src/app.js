@@ -115,8 +115,8 @@ app.get("/weather", (req, res) => {
   // });
 });
 
-app.get("/test", (req, res) => {
-  testApi((error, data) => {
+app.get("/conference", (req, res) => {
+  testApi(undefined,(error, data) => {
     if (error) {
       res.send({
         error: error,
@@ -128,6 +128,35 @@ app.get("/test", (req, res) => {
     }
   });
 });
+
+app.get("/conference/speakers", (req, res) => {
+  testApi("api/v1/speakers",(error, data) => {
+    if (error) {
+      res.send({
+        error: error,
+      });
+    } else {
+      res.send({
+        data,
+      });
+    }
+  });
+});
+
+app.get("/conference/sessions", (req, res) => {
+  testApi("api/v1/sessions",(error, data) => {
+    if (error) {
+      res.send({
+        error: error,
+      });
+    } else {
+      res.send({
+        data,
+      });
+    }
+  });
+});
+
 
 app.get("/products", (req, res) => {
   if (!req.query.search) {
