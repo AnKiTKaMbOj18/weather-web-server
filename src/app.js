@@ -29,6 +29,15 @@ app.use(express.static(publicDirPath));
 //   next();
 // });
 
+app.get("", (req, res) => {
+  res.render("index", {
+    title: "Weather App",
+    description: "Use this site to get your weather!",
+    footerText: "Home Footer",
+    createdBy: "Ankit Kamboj",
+  });
+});
+
 app.get("/home", (req, res) => {
   res.render("index", {
     title: "Weather App",
