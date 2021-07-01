@@ -1,6 +1,8 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+require("dotenv").config();
+
 const { geoCode } = require("./utils/geocode");
 const { forecast } = require("./utils/forecast");
 const { testApi } = require("./utils/testApi");
@@ -116,7 +118,7 @@ app.get("/weather", (req, res) => {
 });
 
 app.get("/conference", (req, res) => {
-  testApi(undefined,(error, data) => {
+  testApi(undefined, (error, data) => {
     if (error) {
       res.send({
         error: error,
@@ -130,7 +132,7 @@ app.get("/conference", (req, res) => {
 });
 
 app.get("/conference/speakers", (req, res) => {
-  testApi("api/v1/speakers",(error, data) => {
+  testApi("api/v1/speakers", (error, data) => {
     if (error) {
       res.send({
         error: error,
@@ -144,7 +146,7 @@ app.get("/conference/speakers", (req, res) => {
 });
 
 app.get("/conference/sessions", (req, res) => {
-  testApi("api/v1/sessions",(error, data) => {
+  testApi("api/v1/sessions", (error, data) => {
     if (error) {
       res.send({
         error: error,
@@ -156,7 +158,6 @@ app.get("/conference/sessions", (req, res) => {
     }
   });
 });
-
 
 app.get("/products", (req, res) => {
   if (!req.query.search) {

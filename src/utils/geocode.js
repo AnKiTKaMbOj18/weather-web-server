@@ -1,9 +1,10 @@
 const request = require("request");
+require("dotenv").config();
 
 const geoCode = (address, callback) => {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
     address
-  )}.json?access_token=pk.eyJ1IjoiYW5raXRrYW1ib2oxOCIsImEiOiJja3FjaGt4engwaHU3MndzMWFpM3U3amR3In0.kc5uq8Oh_UvBgdAy4PH5Fw&limit=1`;
+  )}.json?access_token=${process.env.MAPBOX_ACCESS_KEY}&limit=1`;
 
   request({ url, json: true }, (error, response) => {
     if (error) {
